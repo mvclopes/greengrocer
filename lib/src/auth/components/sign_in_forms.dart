@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/auth/sign_up_screen.dart';
+import 'package:greengrocer/src/home/home_screen.dart';
 import 'custom_text_field.dart';
 
 class SignInForms extends StatelessWidget {
@@ -35,7 +36,13 @@ class SignInForms extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(18))),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) {
+                    return const HomeScreen();
+                  })
+                );
+              },
               child: const Text(
                 "Entrar",
                 style: TextStyle(fontSize: 18),

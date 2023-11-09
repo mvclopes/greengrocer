@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+import '../../home/home_screen.dart';
 import 'custom_text_field.dart';
 
 class SignUpForms extends StatelessWidget {
@@ -71,7 +72,13 @@ class SignUpForms extends StatelessWidget {
                       borderRadius: BorderRadius.circular(18)
                   )
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context) {
+                      return const HomeScreen();
+                    })
+                );
+              },
               child: const Text(
                 "Cadastrar usuário",
                 style: TextStyle(fontSize: 18),
