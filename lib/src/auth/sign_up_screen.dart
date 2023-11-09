@@ -26,9 +26,9 @@ class SignUpScreen extends StatelessWidget {
         child: SizedBox(
           width: size.width,
           height: size.height,
-          child: const Column(
+          child: Column(
             children: [
-              Expanded(
+              const Expanded(
                 child: SignUpTitle(),
               ),
 

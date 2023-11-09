@@ -1,8 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'custom_text_field.dart';
 
 class SignUpForms extends StatelessWidget {
-  const SignUpForms({super.key});
+  SignUpForms({super.key});
+
+  final cpfFormatter = MaskTextInputFormatter(
+    mask: "###.###.###-##",
+    filter: {
+      "#" : RegExp(r'[0-9]'),
+    }
+  );
+
+  final phoneFormatter = MaskTextInputFormatter(
+      mask: "(##) #####-####",
+      filter: {
+        "#" : RegExp(r'[0-9]'),
+      }
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -34,15 +49,17 @@ class SignUpForms extends StatelessWidget {
           ),
 
           // Campo de Nome
-          const CustomTextField(
+          CustomTextField(
             icon: Icons.phone,
             labelText: "Celular",
+            inputFormatters: [phoneFormatter],
           ),
 
           // Campo de Nome
-          const CustomTextField(
+          CustomTextField(
             icon: Icons.file_copy,
             labelText: "CPF",
+            inputFormatters: [cpfFormatter],
           ),
 
           // Botão de entrar
