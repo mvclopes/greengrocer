@@ -1,5 +1,6 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/config/color_palette.dart';
 
 class CustomLogo extends StatelessWidget {
   const CustomLogo({super.key});
@@ -14,11 +15,11 @@ class CustomLogo extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text.rich(
+         Text.rich(
           TextSpan(
             style: TextStyle(fontSize: 40),
             children: [
-              TextSpan(
+              const TextSpan(
                 text: "Green",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -28,7 +29,7 @@ class CustomLogo extends StatelessWidget {
               TextSpan(
                   text: "grocer",
                   style: TextStyle(
-                      color: Colors.red
+                      color: ColorPalette.contrastColor
                   )
               ),
             ]
