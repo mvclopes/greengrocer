@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'custom_text_field.dart';
 
-class CustomForms extends StatelessWidget {
-  const CustomForms({super.key});
+class SignInForms extends StatelessWidget {
+  const SignInForms({super.key});
 
   @override
   Widget build(BuildContext context) {

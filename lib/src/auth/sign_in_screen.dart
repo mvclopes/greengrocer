@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/auth/components/custom_forms.dart';
+import 'package:greengrocer/src/auth/components/sign_in_forms.dart';
 import 'package:greengrocer/src/auth/components/custom_logo.dart';
 import 'package:greengrocer/src/config/color_palette.dart';
 
@@ -22,7 +22,7 @@ class SignInScreen extends StatelessWidget {
                 child: CustomLogo()
               ),
               // Formulário
-              CustomForms()
+              SignInForms()
             ],
           ),
         ),
