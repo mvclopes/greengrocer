@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  int currentIndex = 0;
+  final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
         showUnselectedLabels: true,
         backgroundColor: Colors.green,
         selectedItemColor: Colors.white,
@@ -30,10 +39,27 @@ class HomeScreen extends StatelessWidget {
             label: "Perfil",
           ),
         ],
+        onTap: (index) {
+          setState(() {
+            currentIndex = index;
+            pageController.jumpToPage(index);
+          });
+        },
       ),
-      body: Container(
-        color: Colors.red,
-      ),
+      body: PageView(
+        controller: pageController,
+        children: [
+          Container(color: Colors.red),
+          Container(color: Colors.grey),
+          Container(color: Colors.cyan),
+          Container(color: Colors.amber),
+        ],
+        onPageChanged: (pageIndex) {
+          setState(() {
+            currentIndex = pageIndex;
+          });
+        },
+      )
     );
   }
 }
