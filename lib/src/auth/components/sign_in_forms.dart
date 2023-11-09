@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/auth/sign_up_screen.dart';
 import 'custom_text_field.dart';
 
 class SignInForms extends StatelessWidget {
@@ -91,7 +92,15 @@ class SignInForms extends StatelessWidget {
                     borderRadius: BorderRadius.circular(18)),
                 side: BorderSide(color: Colors.green.withAlpha(90)),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                      builder: (context) {
+                        return const SignUpScreen();
+                      }
+                  )
+                );
+              },
               child: const Text(
                 "Criar Conta",
                 style: TextStyle(
