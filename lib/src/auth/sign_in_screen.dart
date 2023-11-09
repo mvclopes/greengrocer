@@ -8,16 +8,24 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       backgroundColor: ColorPalette.swatchColor,
-      body: const Column(
-        children: [
-          Expanded(
-            child: CustomLogo()
+      body: SingleChildScrollView(
+        child: SizedBox(
+          width: size.width,
+          height: size.height,
+          child: const Column(
+            children: [
+              Expanded(
+                child: CustomLogo()
+              ),
+              // Formulário
+              CustomForms()
+            ],
           ),
-          // Formulário
-          CustomForms()
-        ],
+        ),
       ),
     );
   }
