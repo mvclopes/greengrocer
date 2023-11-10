@@ -1,0 +1,1 @@
+enum ProductUnit { kg, un }
