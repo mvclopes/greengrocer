@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/config/color_palette.dart';
+import 'package:greengrocer/src/features/products/components/cart_item.dart';
+import 'package:greengrocer/src/features/products/components/home_app_bar_title.dart';
 
 class ProductsScreen extends StatelessWidget {
   final Function() onCartPressed;
@@ -12,38 +13,9 @@ class ProductsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Center(
-          child: Text.rich(
-            TextSpan(
-              style: const TextStyle(fontSize: 30),
-              children: [
-                TextSpan(
-                  text: "Green",
-                  style: TextStyle(
-                    color: ColorPalette.swatchColor,
-                    fontWeight: FontWeight.bold
-                  )
-                ),
-                TextSpan(
-                    text: "grocer",
-                    style: TextStyle(
-                        color: ColorPalette.contrastColor,
-                    )
-                )
-              ]
-            )
-          ),
-        ),
+        title: const HomeAppBarTitle(),
         actions: [
-          IconButton(
-            onPressed: () {
-              onCartPressed.call();
-            },
-            icon: Icon(
-              Icons.shopping_cart,
-              color: ColorPalette.swatchColor,
-            )
-          )
+          CartItem(onCartPressed: onCartPressed)
         ],
       ),
       body: Column(
