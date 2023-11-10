@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/features/products/components/cart_item.dart';
-import 'package:greengrocer/src/features/products/components/home_app_bar_title.dart';
+import 'package:greengrocer/src/features/home/components/home_app_bar_title.dart';
 import 'package:greengrocer/src/features/products/components/search_field.dart';
 import 'components/product_categories.dart';
 
