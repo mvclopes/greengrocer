@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/auth/sign_up_screen.dart';
-import 'package:greengrocer/src/home/home_screen.dart';
+import '../../home/home_screen.dart';
+import '../sign_up_screen.dart';
 import 'custom_text_field.dart';
 
 class SignInForms extends StatelessWidget {

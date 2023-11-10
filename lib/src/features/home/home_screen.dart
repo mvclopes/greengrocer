@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../products/products_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -50,7 +51,7 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         children: [
-          Container(color: Colors.red),
+          const ProductsScreen(),
           Container(color: Colors.grey),
           Container(color: Colors.cyan),
           Container(color: Colors.amber),
