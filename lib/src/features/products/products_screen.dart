@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/data/stubs/product_stubs.dart';
 import 'package:greengrocer/src/features/products/components/cart_item.dart';
 import 'package:greengrocer/src/features/home/components/home_app_bar_title.dart';
+import 'package:greengrocer/src/features/products/components/products_grid.dart';
 import 'package:greengrocer/src/features/products/components/search_field.dart';
 import 'components/product_categories.dart';
 
@@ -44,6 +45,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
           ),
 
           // Grid de produtos
+          ProductsGrid(products: productsStubs)
         ],
       ),
     );
