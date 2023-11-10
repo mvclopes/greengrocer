@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/data/stubs/product_stubs.dart';
 import 'package:greengrocer/src/features/products/components/cart_item.dart';
 import 'package:greengrocer/src/features/home/components/home_app_bar_title.dart';
 import 'package:greengrocer/src/features/products/components/search_field.dart';
@@ -14,13 +15,7 @@ class ProductsScreen extends StatefulWidget {
 }
 
 class _ProductsScreenState extends State<ProductsScreen> {
-  List<String> stubCategories = [
-    "Frutas",
-    "Grãos",
-    "Verduras",
-    "Temperos",
-    "Cereais"
-  ];
+  List<String> stubCategories = productCategoriesStub;
   int selectedCategoryIndex = 0;
 
   @override
