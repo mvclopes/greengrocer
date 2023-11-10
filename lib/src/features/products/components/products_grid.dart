@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/domain/model/product.dart';
+import 'package:greengrocer/src/features/products/components/product_tile.dart';
 
 class ProductsGrid extends StatelessWidget {
   final List<Product> products;
@@ -20,7 +21,7 @@ class ProductsGrid extends StatelessWidget {
         ),
         itemCount: products.length,
         itemBuilder: (_, index) {
-          return Container(color: Colors.red,);
+          return ProductTile(product: products[index]);
         },
       ),
     );
