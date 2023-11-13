@@ -18,6 +18,7 @@ class ProductsScreen extends StatefulWidget {
 class _ProductsScreenState extends State<ProductsScreen> {
   List<String> stubCategories = productCategoriesStub;
   int selectedCategoryIndex = 0;
+  int cartItemsAdded = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class _ProductsScreenState extends State<ProductsScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const HomeAppBarTitle(),
-        actions: [CartItem(onCartPressed: widget.onCartPressed)],
+        actions: [CartItem(onCartPressed: widget.onCartPressed, cartItems: cartItemsAdded,)],
       ),
       body: Column(
         children: [
@@ -47,7 +48,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
           // Grid de produtos
           ProductsGrid(
             products: productsStubs,
-            onCartPressed: () {},
+            onCartPressed: () {
+              setState(() {
+                cartItemsAdded++;
+              });
+            },
           )
         ],
       ),

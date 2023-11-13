@@ -3,7 +3,12 @@ import '../../../config/color_palette.dart';
 
 class CartItem extends StatelessWidget {
   final Function() onCartPressed;
-  const CartItem({super.key, required this.onCartPressed});
+  final int cartItems;
+  const CartItem({
+    super.key,
+    required this.onCartPressed,
+    this.cartItems = 0
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +20,9 @@ class CartItem extends StatelessWidget {
       child: GestureDetector(
         onTap: () => onCartPressed.call(),
         child: Badge(
+          isLabelVisible: cartItems != 0,
           backgroundColor: ColorPalette.contrastColor,
-          label: const Text('2'),
+          label: Text(cartItems.toString()),
           child: Icon(
             Icons.shopping_cart,
             color: ColorPalette.swatchColor,
