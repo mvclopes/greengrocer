@@ -31,8 +31,12 @@ class ProductTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  // Image(image: )
-                  Expanded(child: Image.asset(product.imageUrl)),
+                  Expanded(
+                    child: Hero(
+                      tag: product.imageUrl,
+                      child: Image.asset(product.imageUrl),
+                    ),
+                  ),
                   Text(
                     product.name,
                     style: const TextStyle(
