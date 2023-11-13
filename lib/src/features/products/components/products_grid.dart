@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/domain/model/product.dart';
+import 'package:greengrocer/src/features/product_detail/product_detail_screen.dart';
 import 'package:greengrocer/src/features/products/components/product_tile.dart';
 
 class ProductsGrid extends StatelessWidget {
@@ -29,6 +30,13 @@ class ProductsGrid extends StatelessWidget {
           return ProductTile(
             product: products[index],
             onCartPressed: onCartPressed,
+            onProductPressed: (product) {
+              Navigator.of(context).push(MaterialPageRoute(builder: (ctx) {
+                return ProductDetailScreen(
+                  product: products[index],
+                );
+              }));
+            },
           );
         },
       ),

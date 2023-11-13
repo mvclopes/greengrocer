@@ -6,53 +6,58 @@ import 'package:greengrocer/src/utils/utils.dart';
 class ProductTile extends StatelessWidget {
   final Product product;
   final VoidCallback onCartPressed;
+  final Function(Product) onProductPressed;
 
   const ProductTile({
     super.key,
     required this.product,
-    required this.onCartPressed
+    required this.onCartPressed,
+    required this.onProductPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Card(
-          elevation: 1,
-          shadowColor: Colors.grey.shade300,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Image(image: )
-                Expanded(child: Image.asset(product.imageUrl)),
-                Text(
-                  product.name,
-                  style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.bold),
-                ),
-                Row(
-                  children: [
-                    Text(
-                      Utils.convertToCurrency(amount: product.price),
-                      style: TextStyle(
-                          color: ColorPalette.swatchColor,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Text(
-                      " /${product.unit.name}",
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                        fontSize: 12,
+        GestureDetector(
+          onTap: () => onProductPressed.call(product),
+          child: Card(
+            elevation: 1,
+            shadowColor: Colors.grey.shade300,
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Image(image: )
+                  Expanded(child: Image.asset(product.imageUrl)),
+                  Text(
+                    product.name,
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        Utils.convertToCurrency(amount: product.price),
+                        style: TextStyle(
+                            color: ColorPalette.swatchColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      Text(
+                        " /${product.unit.name}",
+                        style: TextStyle(
+                          color: Colors.grey.shade500,
+                          fontSize: 12,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
