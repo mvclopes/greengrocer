@@ -45,7 +45,10 @@ class _ProductsScreenState extends State<ProductsScreen> {
           ),
 
           // Grid de produtos
-          ProductsGrid(products: productsStubs)
+          ProductsGrid(
+            products: productsStubs,
+            onCartPressed: () {},
+          )
         ],
       ),
     );

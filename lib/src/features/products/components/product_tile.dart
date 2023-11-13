@@ -5,8 +5,13 @@ import 'package:greengrocer/src/utils/utils.dart';
 
 class ProductTile extends StatelessWidget {
   final Product product;
+  final VoidCallback onCartPressed;
 
-  const ProductTile({super.key, required this.product});
+  const ProductTile({
+    super.key,
+    required this.product,
+    required this.onCartPressed
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +60,7 @@ class ProductTile extends StatelessWidget {
           top: 4,
           right: 4,
           child: GestureDetector(
-            onTap: () {},
+            onTap: () => onCartPressed.call(),
             child: Container(
               width: 40,
               height: 40,
