@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/features/cart/cart_screen.dart';
+import 'package:greengrocer/src/features/profile/profile_screen.dart';
 
 import '../products/products_screen.dart';
 
@@ -60,9 +61,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
             ),
-            CartScreen(),
-            Container(color: Colors.cyan),
+            const CartScreen(),
             Container(color: Colors.amber),
+            const ProfileScreen(),
           ],
           onPageChanged: (pageIndex) {
             setState(() {
