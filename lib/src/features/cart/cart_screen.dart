@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/data/stubs/product_stubs.dart';
-import 'package:greengrocer/src/domain/model/cart_item.dart';
 import 'package:greengrocer/src/features/cart/components/cart_footer.dart';
-import 'package:greengrocer/src/features/cart/components/cart_tile.dart';
+import 'package:greengrocer/src/features/cart/components/cart_product_list.dart';
 
 class CartScreen extends StatelessWidget {
-  CartScreen({super.key});
-  List<CartItem> items = cartStub;
+  const CartScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,16 +15,7 @@ class CartScreen extends StatelessWidget {
       body: Column(
         children: [
           // Product list
-          Expanded(
-            child: ListView.builder(
-              padding: const EdgeInsets.all(12),
-              physics: const BouncingScrollPhysics(),
-              itemBuilder: (_, index) {
-                return CartTile(item: items[index]);
-              },
-              itemCount: items.length,
-            ),
-          ),
+          CartProductList(items: cartStub),
 
           // Footer
           CartFooter(totalAmount: 99.99)
