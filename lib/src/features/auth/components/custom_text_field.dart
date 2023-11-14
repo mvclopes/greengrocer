@@ -5,6 +5,7 @@ class CustomTextField extends StatefulWidget {
   final IconData icon;
   final String labelText;
   final bool isObscuredField;
+  final TextInputType? keyboardType;
   final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextField({
@@ -12,7 +13,8 @@ class CustomTextField extends StatefulWidget {
     required this.icon,
     required this.labelText,
     this.isObscuredField = false,
-    this.inputFormatters
+    this.inputFormatters,
+    this.keyboardType,
   }) : super(key: key);
 
   @override
@@ -30,7 +32,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    IconData visibilityIcon = shouldShowIcon ? Icons.visibility : Icons.visibility_off;
+    IconData visibilityIcon =
+        shouldShowIcon ? Icons.visibility : Icons.visibility_off;
 
     Widget? suffixIcon = widget.isObscuredField
         ? IconButton(
@@ -45,6 +48,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: TextFormField(
+        keyboardType: widget.keyboardType,
         inputFormatters: widget.inputFormatters,
         obscureText: shouldShowIcon,
         decoration: InputDecoration(
@@ -58,4 +62,3 @@ class _CustomTextFieldState extends State<CustomTextField> {
     );
   }
 }
-
