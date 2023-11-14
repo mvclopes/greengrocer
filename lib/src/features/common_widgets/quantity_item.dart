@@ -4,8 +4,15 @@ import 'package:greengrocer/src/domain/model/product_unit.dart';
 
 class QuantityItem extends StatelessWidget {
   final ProductUnit unit;
+  final int quantity;
+  final Function(int) onPressed;
 
-  const QuantityItem({super.key, required this.unit});
+  const QuantityItem({
+    super.key,
+    required this.unit,
+    required this.onPressed,
+    required this.quantity,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -16,19 +23,26 @@ class QuantityItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(60),
           boxShadow: [
             BoxShadow(
-                color: Colors.grey.shade300, spreadRadius: 1, blurRadius: 2)
+              color: Colors.grey.shade300,
+              spreadRadius: 1,
+              blurRadius: 2,
+            )
           ]),
       child: Row(
         children: [
           _QuantityButton(
             icon: Icons.remove,
-            onTap: () {},
+            onTap: () {
+              if (quantity == 1) return ;
+              int result = quantity - 1;
+              onPressed(result);
+            },
           ),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Text(
-              "kg",
-              style: TextStyle(
+              "$quantity ${unit.name}",
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
               ),
@@ -37,7 +51,7 @@ class QuantityItem extends StatelessWidget {
           _QuantityButton(
             icon: Icons.add,
             backgroundColor: ColorPalette.swatchColor,
-            onTap: () {},
+            onTap: () => onPressed(quantity + 1),
           ),
         ],
       ),
