@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/features/auth/components/custom_text_field.dart';
+import 'package:greengrocer/src/features/common_widgets/custom_text_field.dart';
 import 'package:greengrocer/src/utils/common_input_masks.dart';
 
 class ProfileForms extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/features/home/home_screen.dart';
 import 'package:greengrocer/src/utils/common_input_masks.dart';
-import 'custom_text_field.dart';
+import '../../common_widgets/custom_text_field.dart';
 
 class SignUpForms extends StatelessWidget {
   const SignUpForms({super.key});
