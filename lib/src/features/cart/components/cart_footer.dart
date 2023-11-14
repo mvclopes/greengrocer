@@ -10,11 +10,19 @@ class CartFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.vertical(
+        borderRadius: const BorderRadius.vertical(
           top: Radius.circular(30),
         ),
+        boxShadow: [
+          BoxShadow(
+              color: Colors.grey.shade600,
+              spreadRadius: 1,
+              blurRadius: 2,
+              offset: const Offset(0, 2)
+          )
+        ]
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
