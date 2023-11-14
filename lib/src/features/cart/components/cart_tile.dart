@@ -74,40 +74,57 @@ class CartTile extends StatelessWidget {
   }
 }
 
-class CartTileV2 extends StatelessWidget {
+class CartTileV2 extends StatefulWidget {
   final CartItem item;
+  final Function(CartItem) onRemoveCallback;
 
-  const CartTileV2({super.key, required this.item});
+  const CartTileV2({
+    super.key,
+    required this.item,
+    required this.onRemoveCallback,
+  });
 
+  @override
+  State<CartTileV2> createState() => _CartTileV2State();
+}
+
+class _CartTileV2State extends State<CartTileV2> {
   @override
   Widget build(BuildContext context) {
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       child: ListTile(
         leading: Image.asset(
-          item.product.imageUrl,
+          widget.item.product.imageUrl,
           fit: BoxFit.cover,
           height: 60,
           width: 60,
         ),
         title: Text(
-          item.product.name,
+          widget.item.product.name,
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w500,
           ),
         ),
         subtitle: Text(
-          Utils.convertToCurrency(amount: item.totalPrice()),
+          Utils.convertToCurrency(amount: widget.item.totalPrice()),
           style: TextStyle(
               fontSize: 16,
               color: ColorPalette.swatchColor,
               fontWeight: FontWeight.bold),
         ),
         trailing: QuantityItem(
-          unit: item.product.unit,
-          onPressed: (qtd) {},
-          quantity: item.quantity,
+          unit: widget.item.product.unit,
+          quantity: widget.item.quantity,
+          isRemovable: true,
+          onPressed: (qtd) {
+            setState(() {
+              widget.item.quantity = qtd;
+
+              if (qtd == 0) widget.onRemoveCallback.call(widget.item);
+            });
+          },
         ),
       ),
     );

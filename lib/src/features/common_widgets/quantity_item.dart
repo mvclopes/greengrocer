@@ -6,16 +6,23 @@ class QuantityItem extends StatelessWidget {
   final ProductUnit unit;
   final int quantity;
   final Function(int) onPressed;
+  final bool isRemovable;
 
   const QuantityItem({
     super.key,
     required this.unit,
     required this.onPressed,
     required this.quantity,
+    this.isRemovable = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final removeIcon =
+        isRemovable && quantity == 1 ? Icons.delete_forever : Icons.remove;
+    final removeBackgroundColor =
+        isRemovable && quantity == 1 ? ColorPalette.contrastColor : Colors.grey;
+
     return Container(
       padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
@@ -32,9 +39,10 @@ class QuantityItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           _QuantityButton(
-            icon: Icons.remove,
+            icon: removeIcon,
+            backgroundColor: removeBackgroundColor,
             onTap: () {
-              if (quantity == 1) return ;
+              if (quantity == 1 && !isRemovable) return;
               int result = quantity - 1;
               onPressed(result);
             },
@@ -88,6 +96,7 @@ class _QuantityButton extends StatelessWidget {
           child: Icon(
             icon,
             color: Colors.white,
+            size: 16,
           ),
         ),
       ),
