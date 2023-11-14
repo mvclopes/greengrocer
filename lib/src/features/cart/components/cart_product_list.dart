@@ -13,7 +13,7 @@ class CartProductList extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         physics: const BouncingScrollPhysics(),
         itemBuilder: (_, index) {
-          return CartTile(item: items[index]);
+          return CartTileV2(item: items[index]);
         },
         itemCount: items.length,
       ),
