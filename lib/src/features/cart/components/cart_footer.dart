@@ -4,7 +4,8 @@ import 'package:greengrocer/src/utils/utils.dart';
 
 class CartFooter extends StatelessWidget {
   final double totalAmount;
-  const CartFooter({super.key, required this.totalAmount});
+  final VoidCallback onConfirmed;
+  const CartFooter({super.key, required this.totalAmount, required this.onConfirmed});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class CartFooter extends StatelessWidget {
           SizedBox(
             height: 50,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () => onConfirmed(),
               style: ElevatedButton.styleFrom(
                 backgroundColor: ColorPalette.swatchColor,
                 shape: RoundedRectangleBorder(
