@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
-import '../../home/home_screen.dart';
+import 'package:greengrocer/src/features/home/home_screen.dart';
+import 'package:greengrocer/src/utils/common_input_masks.dart';
 import 'custom_text_field.dart';
 
 class SignUpForms extends StatelessWidget {
-  SignUpForms({super.key});
-
-  final cpfFormatter = MaskTextInputFormatter(
-    mask: "###.###.###-##",
-    filter: {
-      "#" : RegExp(r'[0-9]'),
-    }
-  );
-
-  final phoneFormatter = MaskTextInputFormatter(
-      mask: "(##) #####-####",
-      filter: {
-        "#" : RegExp(r'[0-9]'),
-      }
-  );
+  const SignUpForms({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +39,16 @@ class SignUpForms extends StatelessWidget {
           CustomTextField(
             icon: Icons.phone,
             labelText: "Celular",
-            inputFormatters: [phoneFormatter],
+            inputFormatters: [CommonInputMasks.phoneFormatter],
+            keyboardType: TextInputType.number,
           ),
 
           // Campo de Nome
           CustomTextField(
             icon: Icons.file_copy,
             labelText: "CPF",
-            inputFormatters: [cpfFormatter],
+            inputFormatters: [CommonInputMasks.cpfFormatter],
+            keyboardType: TextInputType.number,
           ),
 
           // Botão de entrar
