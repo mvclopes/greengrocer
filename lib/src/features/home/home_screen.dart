@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/features/cart/cart_screen.dart';
 
 import '../products/products_screen.dart';
 
@@ -59,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 });
               },
             ),
-            Container(color: Colors.grey),
+            CartScreen(),
             Container(color: Colors.cyan),
             Container(color: Colors.amber),
           ],
