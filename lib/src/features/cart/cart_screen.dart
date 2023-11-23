@@ -4,6 +4,8 @@ import 'package:greengrocer/src/domain/model/cart_item.dart';
 import 'package:greengrocer/src/features/cart/components/cart_footer.dart';
 import 'package:greengrocer/src/features/cart/components/cart_product_list.dart';
 
+import 'components/cart_order_confirmation_dialog.dart';
+
 class CartScreen extends StatefulWidget {
   const CartScreen({super.key});
 
@@ -29,37 +31,6 @@ class _CartScreenState extends State<CartScreen> {
     return total;
   }
 
-  Future<bool?> _showOrderConfirmation() {
-    return showDialog<bool>(
-      barrierDismissible: false,
-      context: context,
-      builder: (ctx) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          title: const Text("Confirmação"),
-          content: const Text("Deseja realmente concluir o pedido?"),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(false),
-              child: const Text("Nao"),
-            ),
-            ElevatedButton(
-              onPressed: () => Navigator.of(context).pop(true),
-              style: ElevatedButton.styleFrom(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-              child: const Text("Sim"),
-            )
-          ],
-        );
-      },
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +49,7 @@ class _CartScreenState extends State<CartScreen> {
           CartFooter(
             totalAmount: _cartTotalPrice(),
             onConfirmed: () async {
-              bool? decision = await _showOrderConfirmation();
+              bool? decision = await showOrderConfirmation(context);
             },
           )
         ],
