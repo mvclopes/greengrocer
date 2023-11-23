@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/features/cart/cart_screen.dart';
+import 'package:greengrocer/src/features/orders/orders_screen.dart';
 import 'package:greengrocer/src/features/profile/profile_screen.dart';
 
 import '../products/products_screen.dart';
@@ -62,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             const CartScreen(),
-            Container(color: Colors.amber),
+            const OrdersScreen(),
             const ProfileScreen(),
           ],
           onPageChanged: (pageIndex) {
