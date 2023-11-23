@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/data/stubs/product_categories_stubs.dart';
 import 'package:greengrocer/src/data/stubs/product_stubs.dart';
 import 'package:greengrocer/src/features/products/components/cart_item.dart';
 import 'package:greengrocer/src/features/home/components/home_app_bar_title.dart';
