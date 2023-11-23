@@ -2,10 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/data/stubs/user_stubs.dart';
 import 'package:greengrocer/src/features/auth/sign_in_screen.dart';
 import 'package:greengrocer/src/features/profile/components/profile_forms.dart';
+import 'package:greengrocer/src/features/profile/components/update_password_dialog.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +41,11 @@ class ProfileScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ProfileForms(user: userStub),
-            const _UpdateProfileButton(),
+            _UpdateProfileButton(
+              onUpdatePassword: () async {
+                await updatePasswordDialog(context);
+              },
+            ),
           ],
         ),
       ),
@@ -44,7 +54,9 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class _UpdateProfileButton extends StatelessWidget {
-  const _UpdateProfileButton();
+  final Function() onUpdatePassword;
+
+  const _UpdateProfileButton({required this.onUpdatePassword});
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +69,7 @@ class _UpdateProfileButton extends StatelessWidget {
           ),
           side: BorderSide(color: Colors.green.withAlpha(90)),
         ),
-        onPressed: () {},
+        onPressed: () => onUpdatePassword(),
         child: const Text(
           "Atualizar senha",
           style: TextStyle(fontSize: 18),
