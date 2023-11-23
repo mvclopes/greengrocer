@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:greengrocer/src/data/stubs/user_stubs.dart';
 import 'package:greengrocer/src/features/auth/sign_in_screen.dart';
 import 'package:greengrocer/src/features/profile/components/profile_forms.dart';
 
@@ -13,29 +14,28 @@ class ProfileScreen extends StatelessWidget {
         actions: [
           GestureDetector(
             onTap: () {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(builder: (ctx) {
-                  return const SignInScreen();
-                })
-              );
+              Navigator.of(context)
+                  .pushReplacement(MaterialPageRoute(builder: (ctx) {
+                return const SignInScreen();
+              }));
             },
             child: const Padding(
               padding: EdgeInsets.only(right: 12),
               child: Icon(
-                Icons.exit_to_app,
+                Icons.logout,
                 color: Colors.white,
               ),
             ),
           ),
         ],
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(16),
+      body: Padding(
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            ProfileForms(),
-            _UpdateProfileButton(),
+            ProfileForms(user: userStub),
+            const _UpdateProfileButton(),
           ],
         ),
       ),
@@ -53,12 +53,13 @@ class _UpdateProfileButton extends StatelessWidget {
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18)),
+            borderRadius: BorderRadius.circular(18),
+          ),
           side: BorderSide(color: Colors.green.withAlpha(90)),
         ),
         onPressed: () {},
         child: const Text(
-          "Atualizar perfil",
+          "Atualizar senha",
           style: TextStyle(fontSize: 18),
         ),
       ),
