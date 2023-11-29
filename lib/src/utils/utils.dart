@@ -1,3 +1,4 @@
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 const _defaultLocale = "pt_BR";
@@ -14,5 +15,12 @@ abstract class Utils {
       decimalDigits: decimalDigits
     );
     return formatter.format(amount);
+  }
+  
+  static String formatDateTime(DateTime dateTime) {
+    initializeDateFormatting();
+
+    DateFormat dateFormat = DateFormat.yMd("pt_BR").add_Hm();
+    return dateFormat.format(dateTime);
   }
 }
