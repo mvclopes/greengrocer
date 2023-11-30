@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/data/stubs/cart_stubs.dart';
+import 'package:greengrocer/src/data/stubs/order_stubs.dart';
 import 'package:greengrocer/src/domain/model/cart_item.dart';
 import 'package:greengrocer/src/features/cart/components/cart_footer.dart';
 import 'package:greengrocer/src/features/cart/components/cart_product_list.dart';
+import 'package:greengrocer/src/features/common_widgets/payment_dialog.dart';
 
 import 'components/cart_order_confirmation_dialog.dart';
 
@@ -50,6 +52,12 @@ class _CartScreenState extends State<CartScreen> {
             totalAmount: _cartTotalPrice(),
             onConfirmed: () async {
               bool? decision = await showOrderConfirmation(context);
+              if (decision == true && context.mounted) {
+                showDialog(
+                  context: context,
+                  builder: (_) => PaymentDialog(order: ordersStub.first),
+                );
+              }
             },
           )
         ],

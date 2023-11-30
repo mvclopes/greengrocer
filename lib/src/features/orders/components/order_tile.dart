@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/domain/model/cart_item.dart';
 import 'package:greengrocer/src/domain/model/order.dart';
+import 'package:greengrocer/src/features/common_widgets/payment_dialog.dart';
 import 'package:greengrocer/src/features/orders/components/order_status.dart';
 import 'package:greengrocer/src/utils/utils.dart';
 
@@ -80,7 +81,11 @@ class OrderTile extends StatelessWidget {
               child: SizedBox(
                 height: 42,
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(context: context, builder: (_) {
+                      return PaymentDialog(order: order);
+                    });
+                  },
                   style: ElevatedButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20),
