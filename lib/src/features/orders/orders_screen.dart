@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/data/stubs/order_stubs.dart';
+import 'package:greengrocer/src/features/orders/components/order_tile.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({super.key});
@@ -14,8 +15,8 @@ class OrdersScreen extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         physics: const BouncingScrollPhysics(),
         itemBuilder: (_, index) {
-          return Container(
-            color: Colors.red,
+          return OrderTile(
+            order: ordersStub[index],
           );
         },
         separatorBuilder: (_, index) => const SizedBox(height: 10),
