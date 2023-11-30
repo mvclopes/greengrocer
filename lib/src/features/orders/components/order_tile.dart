@@ -28,6 +28,7 @@ class OrderTile extends StatelessWidget {
             style: const TextStyle(fontSize: 12, color: Colors.black),
           ),
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          expandedCrossAxisAlignment: CrossAxisAlignment.stretch,
           initiallyExpanded: order.status == 'pending_payment',
           children: [
             IntrinsicHeight(
@@ -60,7 +61,40 @@ class OrderTile extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
+            Text.rich(
+              style: const TextStyle(fontSize: 20),
+              TextSpan(
+                text: "Total: ",
+                style: const TextStyle(fontWeight: FontWeight.bold),
+                children: [
+                  TextSpan(
+                      text: Utils.convertToCurrency(amount: order.total),
+                      style: const TextStyle(fontWeight: FontWeight.normal))
+                ],
+              ),
+            ),
+
+            Visibility(
+              visible: order.status == "pending_payment",
+              child: SizedBox(
+                height: 42,
+                child: ElevatedButton.icon(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  icon: Image.asset(
+                    'assets/images/pix.png',
+                    width: 20,
+                    height: 20,
+                  ),
+                  label: const Text("Ver código Pix"),
+                ),
+              ),
+            ),
           ],
         ),
       ),
