@@ -27,13 +27,13 @@ class OrderStatus extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _StatusLine(
+        const _StatusLine(
           isActive: true,
           title: "Pedido confirmado",
         ),
-        _CustomDivider(),
+        const _CustomDivider(),
         if (currentStatus == 1) ...[
-          _StatusLine(
+          const _StatusLine(
             isActive: true,
             title: "Pix estornado",
             backgroundColor: Colors.orange,
@@ -43,6 +43,26 @@ class OrderStatus extends StatelessWidget {
             isActive: true,
             title: "Pagamento Pix expirado",
             backgroundColor: ColorPalette.contrastColor,
+          )
+        ] else ...[
+          _StatusLine(
+            isActive: currentStatus >= 2,
+            title: "Pagamento",
+          ),
+          _CustomDivider(),
+          _StatusLine(
+            isActive: currentStatus >= 3,
+            title: "Preparando",
+          ),
+          _CustomDivider(),
+          _StatusLine(
+            isActive: currentStatus >= 4,
+            title: "Envio",
+          ),
+          _CustomDivider(),
+          _StatusLine(
+            isActive: currentStatus == 5,
+            title: "Entregue",
           )
         ]
       ],
