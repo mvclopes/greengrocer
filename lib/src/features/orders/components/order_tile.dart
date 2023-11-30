@@ -28,17 +28,20 @@ class OrderTile extends StatelessWidget {
             style: const TextStyle(fontSize: 12, color: Colors.black),
           ),
           childrenPadding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          initiallyExpanded: order.status == 'pending_payment',
           children: [
-            SizedBox(
-              height: 150,
+            IntrinsicHeight(
               child: Row(
                 children: [
                   Expanded(
                     flex: 3,
-                    child: ListView(
-                      children: order.items.map((item) {
-                        return _OrderItem(cartItem: item);
-                      }).toList(),
+                    child: SizedBox(
+                      height: 150,
+                      child: ListView(
+                        children: order.items.map((item) {
+                          return _OrderItem(cartItem: item);
+                        }).toList(),
+                      ),
                     ),
                   ),
 
