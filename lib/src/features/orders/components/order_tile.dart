@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/domain/model/cart_item.dart';
 import 'package:greengrocer/src/domain/model/order.dart';
+import 'package:greengrocer/src/features/orders/components/order_status.dart';
 import 'package:greengrocer/src/utils/utils.dart';
 
 class OrderTile extends StatelessWidget {
@@ -33,16 +34,25 @@ class OrderTile extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                      flex: 3,
-                      child: ListView(
-                        children: order.items.map((item) {
-                          return _OrderItem(cartItem: item);
-                        }).toList(),
-                      )),
+                    flex: 3,
+                    child: ListView(
+                      children: order.items.map((item) {
+                        return _OrderItem(cartItem: item);
+                      }).toList(),
+                    ),
+                  ),
+
+                  VerticalDivider(
+                    color: Colors.grey.shade300,
+                    thickness: 2,
+                    width: 12,
+                  ),
+
                   Expanded(
                     flex: 2,
-                    child: Container(
-                      color: Colors.blue,
+                    child: OrderStatus(
+                      status: order.status,
+                      isExpiredPixCode: order.expiredPixCode.isBefore(DateTime.now()),
                     ),
                   ),
                 ],
@@ -57,9 +67,8 @@ class OrderTile extends StatelessWidget {
 
 class _OrderItem extends StatelessWidget {
   final CartItem cartItem;
-  const _OrderItem({
-    required this.cartItem
-  });
+
+  const _OrderItem({required this.cartItem});
 
   @override
   Widget build(BuildContext context) {
